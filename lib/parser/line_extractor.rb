@@ -2,13 +2,7 @@
 
 # Extracts the lines from a .log file.
 class LineExtractor
-  attr_reader :log_file
-
-  def initialize(log_file)
-    @log_file = log_file
-  end
-
-  def extract
+  def self.extract(log_file)
     File.open(log_file).each_with_object([]) do |line, extracted_lines|
       next if line.nil?
 
@@ -21,7 +15,7 @@ class LineExtractor
 
   private
 
-  def valid_line(line)
+  def self.valid_line(line)
     return false if line.length != 2
     # Does the url contains only '/', '_', letters or numbers.
     return false unless %r{^[/_a-zA-Z0-9]+$} =~ line[0]
