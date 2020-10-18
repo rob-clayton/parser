@@ -8,7 +8,7 @@ class Parser
   def run(log_file)
     validate_log_file(log_file)
   end
-  
+
   private
 
   def validate_log_file(log_file)

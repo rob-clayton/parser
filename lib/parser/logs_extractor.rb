@@ -12,7 +12,7 @@ class LogsExtractor
       extracted_logs << { url: split_log[0], address: split_log[1] }
     end
   end
-  
+
   private
 
   def valid_log(log)
