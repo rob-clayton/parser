@@ -7,6 +7,12 @@
 require 'simplecov'
 SimpleCov.start
 
+require 'pry'
+require 'require_all'
+
+require_all 'lib'
+require_all 'spec/helpers'
+
 RSpec.configure do |config|
   # rspec-expectations config goes here:
   config.expect_with :rspec do |expectations|

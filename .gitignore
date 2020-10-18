@@ -4,4 +4,5 @@
 # Ignore selected Coverage files:
 coverage/assets
 coverage/index.html
+coverage/.resultset.json
 coverage/.resultset.json.lock

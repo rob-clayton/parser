@@ -24,3 +24,7 @@ You will need to install Ruby 2.7.2. Here is an example of how to install with r
 Once Ruby is installed you need to install the gems. Here is an example of how to install with bundler:
 1. `gem install bundler`
 1. `bundle install`
+
+### Running the script:
+1. You will need to change the privileges of `parser.sh` to allow you to execute the script from terminal: `chmod +x bin/parser.sh`
+1. To run the script call `parser.sh` whilst passing it a log file as an argument. There is a `webserver.log` file in `/logs`, so as an example you can run: `bin/parser.sh logs/webserver.log`
