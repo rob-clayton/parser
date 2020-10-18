@@ -3,7 +3,7 @@
 require_relative '../../spec_helper'
 
 RSpec.describe LogsExtractor do
-  describe '.extract' do
+  describe '#extract' do
     let(:log_file) { LogFile.new }
     let(:default_log_file) { LogFile.new }
 
@@ -12,11 +12,11 @@ RSpec.describe LogsExtractor do
     end
 
     it 'returns an empty Array when log file is empty' do
-      expect(described_class.extract(log_file.path)).to eq([])
+      expect(subject.extract(log_file.path)).to eq([])
     end
 
     it 'return an Array of Hashes' do
-      extracted_logs = described_class.extract(default_log_file.path)
+      extracted_logs = subject.extract(default_log_file.path)
 
       expect(extracted_logs).to be_an_instance_of(Array)
       expect(extracted_logs.length).to eq(4)
@@ -26,7 +26,7 @@ RSpec.describe LogsExtractor do
     end
 
     it 'splits each log on white space seporating the url and the address' do
-      expect(described_class.extract(default_log_file.path))
+      expect(subject.extract(default_log_file.path))
         .to eq(
           [
             { url: '/home', address: '184.123.665.067' },
@@ -52,7 +52,7 @@ RSpec.describe LogsExtractor do
           ]
         )
 
-        expect(described_class.extract(logs.path))
+        expect(subject.extract(logs.path))
           .to eq(
             [
               { url: '/home', address: '184.123.665.067' },
@@ -72,7 +72,7 @@ RSpec.describe LogsExtractor do
           ]
         )
 
-        expect(described_class.extract(logs.path))
+        expect(subject.extract(logs.path))
           .to eq(
             [
               { url: '/home_a/12/cde', address: '184.123.665.067' },
@@ -92,7 +92,7 @@ RSpec.describe LogsExtractor do
           ]
         )
 
-        expect(described_class.extract(logs.path))
+        expect(subject.extract(logs.path))
           .to eq([{ url: '/home', address: '184.123.665.067' }])
       end
     end

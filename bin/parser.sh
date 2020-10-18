@@ -2,4 +2,4 @@
 
 require './lib/parser'
 
-Parser.run ARGV.first
+Parser.new.run ARGV.first
