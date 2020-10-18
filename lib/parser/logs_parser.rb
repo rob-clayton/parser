@@ -15,14 +15,16 @@ class LogsParser
 
   def count_visits(logs)
     logs.each_with_object({}) do |log, visits|
-      url = log[:url]
+      visits[log[:url]] = visit(visits, log, log[:url])
+    end.values
+  end
 
-      visits[url] = case visits[url]
-                    when nil
-                      new_visit(log)
-                    else
-                      additional_visit(visits[url], log)
-                    end
+  def visit(visits, log, url)
+    case visits[url]
+    when nil
+      new_visit(log)
+    else
+      additional_visit(visits[url], log)
     end
   end
 
@@ -30,7 +32,8 @@ class LogsParser
     {
       count: 1,
       unique_count: 1,
-      addresses: Set[log[:address]]
+      addresses: Set[log[:address]],
+      url: log[:url]
     }
   end
 
@@ -38,7 +41,8 @@ class LogsParser
     {
       count: visit[:count] += 1,
       unique_count: visit[:addresses].include?(log[:address]) ? visit[:unique_count] : visit[:unique_count] += 1,
-      addresses: visit[:addresses].add(log[:address])
+      addresses: visit[:addresses].add(log[:address]),
+      url: log[:url]
     }
   end
 end
