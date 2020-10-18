@@ -2,7 +2,7 @@
 
 require_relative '../../spec_helper'
 
-RSpec.describe LineExtractor do
+RSpec.describe LogsExtractor do
   describe '.extract' do
     let(:log_file) { LogFile.new }
     let(:default_log_file) { LogFile.new }
@@ -16,16 +16,16 @@ RSpec.describe LineExtractor do
     end
 
     it 'return an Array of Hashes' do
-      extracted_lines = described_class.extract(default_log_file.path)
+      extracted_logs = described_class.extract(default_log_file.path)
 
-      expect(extracted_lines).to be_an_instance_of(Array)
-      expect(extracted_lines.length).to eq(4)
-      extracted_lines.each do |line|
-        expect(line).to be_an_instance_of(Hash)
+      expect(extracted_logs).to be_an_instance_of(Array)
+      expect(extracted_logs.length).to eq(4)
+      extracted_logs.each do |log|
+        expect(log).to be_an_instance_of(Hash)
       end
     end
 
-    it 'splits each line on white space seporating the url and the address' do
+    it 'splits each log on white space seporating the url and the address' do
       expect(described_class.extract(default_log_file.path))
         .to eq(
           [
