@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 class LogFile
-  attr_reader :temp_file
+  attr_reader :path
 
   def initialize
-    @temp_file = Tempfile.new('stubbed_logs.log', '/tmp').path
+    @path = Tempfile.create(['stubbed_logs', '.log'], '/tmp').path
   end
 
   def add_line(line)
-    File.open(temp_file, 'a') do |file|
+    File.open(path, 'a') do |file|
       file.puts(line.to_s)
     end
   end
