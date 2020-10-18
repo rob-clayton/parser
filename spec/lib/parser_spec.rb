@@ -9,10 +9,7 @@ RSpec.describe Parser do
     let(:invalid_file_error) { 'Invalid file type: Please provide a .log file' }
 
     before(:each) do
-      log_file.add_line('/home 184.123.665.067')
-      log_file.add_line('/about/2 444.701.448.104')
-      log_file.add_line('/help_page/1 929.398.951.889')
-      log_file.add_line('/index 444.701.448.104')
+      log_file.add_default_logs
     end
 
     it 'receives a log file' do

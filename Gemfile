@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 ruby '2.7.2'
 
 group :test do
-  gem 'pry', '0.13.1'
+  gem 'pry-byebug', '3.9.0'
   gem 'rspec', '3.9.0'
   gem 'rubocop', '0.93.1'
   gem 'simplecov', '0.19.0'

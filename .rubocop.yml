@@ -3,3 +3,7 @@ AllCops:
   DisplayCopNames: true
   ExtraDetails: true
   NewCops: enable
+
+Metrics/BlockLength:
+  Exclude:
+    - '**/*_spec.rb'

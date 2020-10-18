@@ -12,7 +12,7 @@ class Parser
   private
 
   def validate_log_file(log_file)
-    raise StandardError.new FILE_NOT_FOUND_ERROR unless log_file.nil? || File.file?(log_file)
-    raise StandardError.new INVALID_FILE_TYPE_ERROR unless File.extname(log_file) == '.log'
+    raise StandardError, FILE_NOT_FOUND_ERROR unless log_file.nil? || File.file?(log_file)
+    raise StandardError, INVALID_FILE_TYPE_ERROR unless File.extname(log_file) == '.log'
   end
 end
