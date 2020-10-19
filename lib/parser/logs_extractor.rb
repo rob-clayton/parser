@@ -3,13 +3,15 @@
 # Extracts the logs from a .log file.
 class LogsExtractor
   def extract(log_file)
-    File.open(log_file).each_with_object([]) do |log, extracted_logs|
-      next if log.nil?
+    File.open(log_file) do |file|
+      file.each_with_object([]) do |log, extracted_logs|
+        next if log.nil?
 
-      split_log = log.chomp.split(' ')
-      next unless valid_log(split_log)
+        split_log = log.chomp.split(' ')
+        next unless valid_log(split_log)
 
-      extracted_logs << { url: split_log[0], address: split_log[1] }
+        extracted_logs << { url: split_log[0], address: split_log[1] }
+      end
     end
   end
 
